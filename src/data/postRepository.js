@@ -20,5 +20,4 @@ export class PostRepository {
         return fetch(`${BASE_URL}/posts?${params}`)
             .then(response => response.json())
     }
-
 }

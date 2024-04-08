@@ -30,8 +30,6 @@ export class GetPosts {
             return acc
         }, {})
 
-        console.log(usersById)
-
         return postDtoList.map(dto => this.#toPost(dto, usersById[dto.userId]))
     }
 
