@@ -1,37 +1,33 @@
 import {GetPosts} from "../domain/useCases/getPosts.js";
-
-const ViewState = (isLoading = true) => ({
-    isLoading: isLoading,
-    posts: [],
-    page: 0,
-    searchQuery: null
-})
+import {observableOf} from "./property/ObservableProperty.js";
 
 export class ViewController {
 
-    #viewStateUpdatedListener
     #getPosts
 
-    #state = ViewState()
+    #isLoading = observableOf(false)
+    #searchQuery = observableOf(null)
+    #posts = observableOf([])
+    #page = 0
 
     constructor(getPosts = new GetPosts()) {
         this.#getPosts = getPosts
     }
 
-    #fireViewStateUpdated = () => {
-        if (this.#viewStateUpdatedListener === null) return
-
-        this.#viewStateUpdatedListener(this.#state)
-    }
-
-    setViewStateUpdatedListener = (listener) => this.#viewStateUpdatedListener = listener
-
     onQueryChanged = (searchQuery) => {
+        this.#searchQuery.setValue(searchQuery)
 
+        // TODO
     }
 
     onLoadMore = () => {
 
     }
+
+    get isLoading() { return this.#isLoading.toImmutable() }
+
+    get searchQuery() { return this.#searchQuery.toImmutable() }
+
+    get posts() { return this.#posts.toImmutable() }
 
 }
