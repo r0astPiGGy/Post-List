@@ -1,5 +1,5 @@
 import {ViewController} from "./viewController.js";
 
-export function start(viewController = new ViewController()) {
+export function init(viewController = new ViewController()) {
 
 }

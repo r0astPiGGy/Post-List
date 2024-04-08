@@ -4,20 +4,20 @@ import {paramsOf} from "./utils.js";
 export class PostRepository {
 
     getPosts = (
+        titleQuery = null,
         page = 0,
-        perPage = POSTS_PER_PAGE,
-        titleQuery = null
+        perPage = POSTS_PER_PAGE
     ) => {
         const params = paramsOf({
-            "page": page,
-            "perPage": perPage
+            "_page": page,
+            "_perPage": perPage
         })
 
         if (titleQuery !== null) {
             params["title_like"] = titleQuery
         }
 
-        return fetch(`${BASE_URL}?${params}`)
+        return fetch(`${BASE_URL}/posts?${params}`)
             .then(response => response.json())
     }
 
