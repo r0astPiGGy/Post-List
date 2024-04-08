@@ -1,0 +1,1 @@
+export const paramsOf = (paramObj) => new URLSearchParams(paramObj).toString()
