@@ -33,7 +33,7 @@ export class ViewController {
         this.#loadByQueryDebounced(searchQuery)
     }
 
-    #loadByQueryDebounced = debounce(() => this.clearAndLoad(), DEBOUNCE_TIMEOUT_MILLIS)
+    #loadByQueryDebounced = debounce(searchQuery => this.clearAndLoad(searchQuery), DEBOUNCE_TIMEOUT_MILLIS)
 
     clearAndLoad = (searchQuery = null) => {
         this.#page = 0

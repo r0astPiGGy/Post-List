@@ -47,8 +47,8 @@ body {
     flex-direction: column;
 }
 
-#no-posts {
-    font-size: 14px;
+#no-posts > p {
+    font-size: 18px;
 }
 
 #error-container {
