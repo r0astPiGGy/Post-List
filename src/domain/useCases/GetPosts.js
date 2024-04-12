@@ -1,7 +1,7 @@
-import {PostRepository} from "../../data/postRepository.js";
-import {UserRepository} from "../../data/userRepository.js";
-import {Post} from "../model/post.js";
-import {User} from "../model/user.js";
+import {PostRepository} from "../../data/PostRepository.js";
+import {UserRepository} from "../../data/UserRepository.js";
+import {Post} from "../model/Post.js";
+import {User} from "../model/User.js";
 import {distinct} from "../utils.js";
 
 export class GetPosts {

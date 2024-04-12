@@ -1,5 +1,6 @@
-import {GetPosts} from "../domain/useCases/getPosts.js";
+import {GetPosts} from "../domain/useCases/GetPosts.js";
 import {observableOf} from "./property/ObservableProperty.js";
+import {observableListOf} from "./property/ObservableList.js";
 
 export class ViewController {
 
@@ -7,7 +8,7 @@ export class ViewController {
 
     #isLoading = observableOf(false)
     #searchQuery = observableOf(null)
-    #posts = observableOf([])
+    #posts = observableListOf([])
     #page = 0
 
     constructor(getPosts = new GetPosts()) {
@@ -23,6 +24,8 @@ export class ViewController {
 
     onLoadMore = () => {
         if (this.isLoading.getValue()) return
+
+        this.#loadPosts()
     }
 
     #loadPosts = () => {
@@ -30,11 +33,10 @@ export class ViewController {
 
         this.#isLoading.setValue(true)
 
-        this.#getPosts.execute()
-            .then(posts => {
-                this.#posts.setValue(posts)
-                this.#isLoading.setValue(false)
-            })
+        this.#getPosts
+            .execute(this.#page++, this.searchQuery.getValue())
+            .then(posts => this.#posts.append(posts))
+            .finally(() => this.#isLoading.setValue(false))
     }
 
     get isLoading() { return this.#isLoading.toImmutable() }

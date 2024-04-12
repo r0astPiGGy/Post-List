@@ -1,4 +1,4 @@
-import {ViewController} from "./viewController.js";
+import {ViewController} from "./ViewController.js";
 
 const searchView = document.querySelector("#search-bar")
 const postContainer = document.querySelector("#posts-list")
@@ -21,7 +21,7 @@ export function init(viewController = new ViewController()) {
 const onSearchQueryUpdated = (query) => searchView.value = query
 
 function onIsLoadingUpdated(isLoading) {
-    loader.style.display = isLoading ? "visible" : "none";
+    loader.style.display = isLoading ? "block" : "none";
 }
 
 function onPostsUpdated(posts) {

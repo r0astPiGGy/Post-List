@@ -1,7 +1,7 @@
-import {UserRepository} from "./data/userRepository.js";
-import {PostRepository} from "./data/postRepository.js";
-import {GetPosts} from "./domain/useCases/getPosts.js";
-import {ViewController} from "./presentation/viewController.js";
+import {UserRepository} from "./data/UserRepository.js";
+import {PostRepository} from "./data/PostRepository.js";
+import {GetPosts} from "./domain/useCases/GetPosts.js";
+import {ViewController} from "./presentation/ViewController.js";
 import {init} from './presentation/htmlRenderer.js'
 import {MockPostRepository, MockUserRepository} from "./data/mock.js";
 
