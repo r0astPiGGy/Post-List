@@ -5,7 +5,7 @@ const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms))
 const postOf = (id, userId) => ({
     id: id,
     userId: userId,
-    title: "Lorem ipsum",
+    title: `Lorem ipsum ${id}`,
     body: "Dolor sit amet body body body"
 })
 
