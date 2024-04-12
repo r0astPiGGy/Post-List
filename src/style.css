@@ -1,0 +1,120 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    color: #e5e5e5;
+}
+
+body {
+    background: #282828;
+}
+
+#posts-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.post {
+    border: #4f4f4f 1px solid;
+    border-radius: 16px;
+    padding: 16px;
+}
+
+.post h2 {
+    white-space: nowrap;
+    overflow: hidden;
+    font-size: 22px;
+    text-overflow: ellipsis;
+}
+
+.post > p {
+    font-size: 14px;
+}
+.post > .author {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: end;
+    gap: 8px;
+}
+
+.author .person-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.author .person-name {
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.person-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 32px;
+    width: 32px;
+    padding: 8px;
+    background: dimgray;
+    text-align: center;
+    border-radius: 48px;
+    font-size: 20px;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    opacity: 70%;
+}
+
+.search-bar-layout {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    align-items: center;
+    border: 1px #333 solid;
+    padding: 8px 16px;
+    border-radius: 16px;
+}
+
+.search-bar-layout input {
+    background: transparent;
+    border: none;
+}
+
+.search-bar-layout input:focus {
+    outline: none;
+}
+
+#search-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.spacer {
+    height: 16px;
+    width: 16px;
+}
+
+.spacer-sm {
+    height: 8px;
+    width: 8px;
+}
+
+#container {
+    padding: 48px 30%;
+    width: 100%;
+    gap: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#container > * {
+    width: 100%;
+}

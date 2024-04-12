@@ -12,6 +12,7 @@ export class ViewController {
 
     constructor(getPosts = new GetPosts()) {
         this.#getPosts = getPosts
+        this.#loadPosts()
     }
 
     onQueryChanged = (searchQuery) => {
@@ -22,6 +23,11 @@ export class ViewController {
 
     onLoadMore = () => {
 
+    }
+
+    #loadPosts = () => {
+        this.#getPosts.execute()
+            .then(posts => this.#posts.setValue(posts))
     }
 
     get isLoading() { return this.#isLoading.toImmutable() }
