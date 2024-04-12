@@ -22,12 +22,19 @@ export class ViewController {
     }
 
     onLoadMore = () => {
-
+        if (this.isLoading.getValue()) return
     }
 
     #loadPosts = () => {
+        if (this.isLoading.getValue()) return
+
+        this.#isLoading.setValue(true)
+
         this.#getPosts.execute()
-            .then(posts => this.#posts.setValue(posts))
+            .then(posts => {
+                this.#posts.setValue(posts)
+                this.#isLoading.setValue(false)
+            })
     }
 
     get isLoading() { return this.#isLoading.toImmutable() }

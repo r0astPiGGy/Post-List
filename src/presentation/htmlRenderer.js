@@ -2,6 +2,7 @@ import {ViewController} from "./viewController.js";
 
 const searchView = document.querySelector("#search-bar")
 const postContainer = document.querySelector("#posts-list")
+const loader = document.querySelector("#loader")
 
 export function init(viewController = new ViewController()) {
     viewController.searchQuery.observe(onSearchQueryUpdated)
@@ -9,12 +10,18 @@ export function init(viewController = new ViewController()) {
     viewController.posts.observe(onPostsUpdated)
 
     searchView.addEventListener("input", evt => viewController.onQueryChanged(evt.target.value))
+
+    window.addEventListener("scroll", () => {
+        if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+            viewController.onLoadMore()
+        }
+    });
 }
 
 const onSearchQueryUpdated = (query) => searchView.value = query
 
 function onIsLoadingUpdated(isLoading) {
-
+    loader.style.display = isLoading ? "visible" : "none";
 }
 
 function onPostsUpdated(posts) {
@@ -23,8 +30,8 @@ function onPostsUpdated(posts) {
 }
 
 function createPost(post) {
-    const phone = post.getAuthor().getPhone()
     const fullName = post.getAuthor().getName()
+    const phone = post.getAuthor().getPhone()
     const email = post.getAuthor().getEmail()
 
     const postEl = document.createElement("div")
