@@ -1,35 +1,14 @@
+import {ObservableProperty} from "./ObservableProperty.js";
+
 export const observableListOf = (value) => new ObservableList(value)
 
-export class ObservableList {
-
-    #observers = []
-    #value
+export class ObservableList extends ObservableProperty {
 
     constructor(value) {
-        this.#value = value
-    }
-
-    setValue = (value) => {
-        this.#value = value
-        this.#notifyAll()
+        super(value)
     }
 
     append = (values) => {
-        this.#value = [...this.#value, ...values]
-        this.#notifyAll()
+        this.setValue([...this.getValue(), ...values])
     }
-
-    #notifyAll = () => this.#observers.forEach(o => o(this.#value))
-
-    getValue = () => this.#value
-
-    observe = (func) => {
-        this.#observers.push(func)
-        func(this.#value)
-    }
-
-    toImmutable = () => ({
-        observe: this.observe,
-        getValue: this.getValue
-    })
 }

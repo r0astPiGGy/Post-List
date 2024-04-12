@@ -7,10 +7,10 @@ import {MockPostRepository, MockUserRepository} from "./data/mock.js";
 
 const postRepository = new MockPostRepository()
 const userRepository = new MockUserRepository()
+// const postRepository = new PostRepository()
+// const userRepository = new UserRepository()
 
 const getPosts = new GetPosts(postRepository, userRepository)
 const viewController = new ViewController(getPosts)
 
 init(viewController)
-
-console.log(await getPosts.execute())

@@ -17,6 +17,15 @@
         </div>
     </div>
     <div id="posts-list"></div>
+    <div id="no-posts" style="display: none">
+        <p>По вашему запросу ничего не найдено</p>
+    </div>
+    <div id="error-container" style="display: none">
+        <p>Произошла ошибка</p>
+        <p id="error"></p>
+        <div class="spacer-sm"></div>
+        <button id="retry-button">Повторить попытку</button>
+    </div>
     <div id="loader">
         <svg class="circular">
             <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="5" stroke-miterlimit="10"></circle>

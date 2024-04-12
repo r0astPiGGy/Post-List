@@ -8,14 +8,16 @@ export class PostRepository {
         page = 0,
         perPage = POSTS_PER_PAGE
     ) => {
-        const params = paramsOf({
+        const paramObj = {
             "_page": page,
             "_perPage": perPage
-        })
-
-        if (titleQuery !== null) {
-            params["title_like"] = titleQuery
         }
+
+        if (titleQuery !== null && titleQuery !== "") {
+            paramObj["title_like"] = titleQuery
+        }
+
+        const params = paramsOf(paramObj)
 
         return fetch(`${BASE_URL}/posts?${params}`)
             .then(response => response.json())

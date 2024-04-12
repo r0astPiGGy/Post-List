@@ -39,13 +39,33 @@ body {
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: end;
     gap: 8px;
 }
 
 .author .person-info {
     display: flex;
     flex-direction: column;
+}
+
+#no-posts {
+    font-size: 14px;
+}
+
+#error-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 4px;
+}
+
+#error-container > p:first-child {
+    font-size: 18px;
+    color: #ce2727;
+}
+
+#error {
+    font-size: 14px;
+    color: #ce2727;
 }
 
 .author .person-name {
@@ -72,6 +92,20 @@ a {
 
 a:hover {
     opacity: 70%;
+}
+
+button {
+    border: 1px #333 solid;
+    padding: 8px 16px;
+    border-radius: 16px;
+    background: transparent;
+    font-size: 12px;
+    cursor: pointer;
+    transition: opacity 80ms ease-out;
+}
+
+button:hover {
+    opacity: 60%;
 }
 
 .search-bar-layout {

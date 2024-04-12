@@ -5,3 +5,5 @@ export const debounce = (func, timeout = 300) => {
         timer = setTimeout(() => { func.apply(this, args) }, timeout)
     }
 }
+
+export const isNotEmpty = (string) => string !== null && string !== ""
